@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane fx:id="mainPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308"
+            maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="140.0"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="test.elevator.gui.FxElevator">
+    <content>
+        <VBox fx:id="elevator" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="120.0"/>
+    </content>
+</ScrollPane>
