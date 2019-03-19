@@ -17,7 +17,6 @@ public class ApplicationContext {
 
     private final Map<String, ElevatorFacade> facades = new HashMap<>();
     private final Map<String, Runnable> tasks = new HashMap<>();
-    private final Object lock = new Object();
 
     public void creteElevator(String name, Cabin cabin, Transporter transporter, StrategyFactory strategyFactory) {
         ElevatorState startState = ElevatorStateFactory.getState(ElevatorStateFactory.STOP_STATE);
@@ -32,19 +31,13 @@ public class ApplicationContext {
         tasks.put(name, () -> {
             while (!Thread.currentThread().isInterrupted()) {
                 try {
-                    synchronized (lock) {
-                        elevator.doJob();
-                    }
+                    elevator.doJob();
                     Thread.sleep(ConfStore.getConf().getIntParam(ConfStore.THREAD_DELAY));
                 } catch (InterruptedException ignore) {
                     Thread.currentThread().interrupt();
                 }
             }
         });
-    }
-
-    public Object getLock() {
-        return lock;
     }
 
     public ElevatorFacade getFacadeOf(String name){

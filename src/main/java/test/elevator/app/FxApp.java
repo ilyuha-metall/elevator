@@ -90,11 +90,7 @@ public class FxApp extends Application {
                 try {
                     fxElevators.forEach((name, fxElevator) -> {
                         int position = CONTEXT.getFacadeOf(name).getPosition();
-                        Platform.runLater(() -> {
-                            synchronized (CONTEXT.getLock()) {
-                                fxElevator.changePosition(position);
-                            }
-                        });
+                        Platform.runLater(() -> fxElevator.changePosition(position));
                     });
                     Thread.sleep(100);
                 } catch (InterruptedException ignore) {
