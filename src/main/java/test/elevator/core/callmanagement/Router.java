@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Router {
-    private final List<Call> availableCalls = new LinkedList<>();
+    private final List<Call> availableCalls = Collections.synchronizedList(new LinkedList<>());
     private final List<Call> acceptedCalls = new ArrayList<>();
     private final List<ActionObserver> actionObservers = new ArrayList<>();
     private final List<CallAcceptanceCheck> additionChecks = new ArrayList<>();
